@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -91,5 +91,17 @@ Menurut saya, penggunaan DashMap lebih cocok untuk kasus ini karena sangat mempe
 Kita bisa saja menggunakan pola Singleton untuk memastikan hanya ada satu instance dari data. Namun, pada kasus Bambangshop yang menggunakan multithreading, penggunaan DashMap menjadi lebih cocok karena ia mendukung multithreading dengan fitur thread safety secara otomatis. Apabila kita menggunakan pola Singleton, kita harus menangani sinkronisasi secara manual, sehingga penggunaan DashMap menjadi lebih efisien mengingat DashMap adalah built-in data structure yang mendukung multithreading.
 
 #### Reflection Publisher-2
+
+>1. In the Model-View Controller (MVC) compound pattern, there is no “Service” and “Repository”. Model in MVC covers both data storage and business logic. Explain based on your understanding of design principles, why we need to separate “Service” and “Repository” from a Model?
+
+Menurut pemahaman saya, memisahkan Service dan Repository dari Model akan membantu membuat kode menjadi lebih terstruktur karena peran masing-masing komponen jadi terlihat jelas. Service bertanggung jawab untuk mengatur proses jalannya aplikasi, misalnya seperti mengambil atau mengolah data. Sementara itu,Repository akan menangani akses dan penyimpanan data ke tempat pemyimpanan data. Dengan demikian, selain kode menjadi lebih mudah dipahami dan dipelihara, proses pengujian kode juga akan menjadi lebih aman karena perubahan di suatu bagian tidak akan mengganggu bagian lainnya.
+
+>2. What happens if we only use the Model? Explain your imagination on how the interactions between each model (Program, Subscriber, Notification) affect the code complexity for each model?
+
+Jika kita hanya menggunakan Model (tanpa pembagian seperti Service dan Repository), maka aturan proses aplikasi dan penyimpanan data akan tergabung ke dalam satu komponen. Hal ini dapat menimbulkan risiko tertentu, seperti tingkat kompleksitas kode yang bertambah sehingga mempersulit pemeliharaan kode ke depannya. Interaksi antar Model (Program, Subscriber, dan Notification) akan terjadi secara langsung, sehingga  perubahan pada suatu bagian yang bisa saja berdampak pada bagian lain yang tidak ingin diubah.
+
+>3. Have you explored more about Postman? Tell us how this tool helps you to test your current work. You might want to also list which features in Postman you are interested in or feel like it is helpful to help your Group Project or any of your future software engineering projects.
+
+Selama masa perkuliahan, saya sudah pernah beberapa kali menggunakan Postman untuk melakukan pengujian endpoint aplikasi, yang dalam kasus ini adalah untuk Bambangshop. Dengan Postman, kita dapat dengan mudah melihat respons aplikasi kita terhadap berbagai request, karena Postman membantu kita untuk mengirim request tanpa perlu membuat tampilan halaman terlebih dahulu. Adapun fitur yang menurut saya cukup membantu adalah fitur Collections yang dapat mengorganisir dan mengelola sekelompok requests; serta fitur Environment yang dapat menyimpan variabel dalam API requests, misalnya URL, token autentikasi, dan lain-lain.
 
 #### Reflection Publisher-3
