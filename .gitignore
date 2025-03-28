@@ -140,4 +140,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/rust,linux,windows,database,rust-analyzer,visualstudiocode,venv,dotenv,virtualenv,direnv,jenv,git
 
-.idea
+.idea/
