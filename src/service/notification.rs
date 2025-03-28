@@ -22,10 +22,10 @@ impl NotificationService{
         let product_type_str: &str = &product_type_upper.as_str();
         let result : Option<Subscriber> = SubscriberRepository::delete(product_type_str, url);
         if result.is_none(){
-             return Err (compose_error_response(
-                 Status::NotFound,
-                 String::from("Subscriber Not Found")
-             ));
+            return Err(compose_error_response(
+                Status::NotFound,
+                String::from("Subscriber Not Found")
+            ));
         }
         return Ok(result.unwrap());
     }

@@ -65,11 +65,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [x] Commit: `Implement publish function in Program service and Program controller.`
+    -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -105,3 +105,16 @@ Jika kita hanya menggunakan Model (tanpa pembagian seperti Service dan Repositor
 Selama masa perkuliahan, saya sudah pernah beberapa kali menggunakan Postman untuk melakukan pengujian endpoint aplikasi, yang dalam kasus ini adalah untuk Bambangshop. Dengan Postman, kita dapat dengan mudah melihat respons aplikasi kita terhadap berbagai request, karena Postman membantu kita untuk mengirim request tanpa perlu membuat tampilan halaman terlebih dahulu. Adapun fitur yang menurut saya cukup membantu adalah fitur Collections yang dapat mengorganisir dan mengelola sekelompok requests; serta fitur Environment yang dapat menyimpan variabel dalam API requests, misalnya URL, token autentikasi, dan lain-lain.
 
 #### Reflection Publisher-3
+
+>1. Observer Pattern has two variations: Push model (publisher pushes data to subscribers) and Pull model (subscribers pull data from publisher). In this tutorial case, which variation of Observer Pattern that we use?
+
+Pada modul kali ini kita menerapkan Push Model, di mana setiap perubahan data (seperti create, update, atau delete) akan memicu pemanggilan NotificationService. Publisher akan mengirimkan informasi tersebut ke Subscriber melalui HTTP POST ke URL yang telah diberikan, yang berisi data terkait perubahan atau produk tersebut.
+
+>2. What are the advantages and disadvantages of using the other variation of Observer Pattern for this tutorial case? (example: if you answer Q1 with Push, then imagine if we used Pull)
+
+Keuntungan menggunakan Pull Model adalah Subscriber dapat menentukan kapan mereka akan melakukan pull data dari Publisher. Ini akan meningkatkan efisiensi karena program hanya mengirimkan data ketika Subscriber memerlukannya, sehingga menghindari beban pengiriman data yang tidak diperlukan. Subsciber dapat mengambil data ketika mereka membutuhkan data tersebut.
+Namun, penggunaan Pull Model juga memiliki kerugian. Misalnya adalah Subscriber harus memahami struktur data sumber agar dapat melakukan request yang tepat. Subscriber juga harus mengatur mekanisme request pembaruan secara berkala agar tidak ada data yang tertinggal.
+
+>3. Explain what will happen to the program if we decide to not use multi-threading in the notification process.
+
+Jika kita tidak menggunakan multi-threading dalam proses notification, maka kita akan menghadapi masalah antrian yang panjang. Hal ini dikarenakan NotificationService akan mengirim pemberitahuan kepada setiap Subscriber satu per satu, dan tidak akan melanjutkan pemberitahuan ke Subscriber selanjutnya sebelum Subscriber yang sekarang selesai. Artinya, jumlah Subscriber yang banyak akan membuat aplikasi menjadi lebih lambat sehingga mempengaruhi waktu respons aplikasi. Ini dapat menyebabkan bottleneck dan membuat proses pengiriman notifikasi menjadi tidak efisien.
